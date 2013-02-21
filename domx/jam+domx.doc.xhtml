@@ -1,0 +1,30 @@
+<?xml-stylesheet href="../../doc/-mix/index.stage=dev.xsl" type="text/xsl"?>
+<doc_root
+    xmlns="http://www.w3.org/1999/xhtml"
+    xml:lang="ru"
+    >
+
+    <h1>$jam_domx</h1>
+    <p>Обёртка вокруг XML документа.</p>
+
+    <wc_js-test>
+    <![CDATA[
+        with( $jam ){
+            var str= '<xxx/>'
+            _test.ok( $jam_domx.parse( str ).toString(), str )
+        }
+    ]]>
+    </wc_js-test>
+
+    <wc_js-test>
+    <![CDATA[
+        with( $jam ){
+            var xml= $jam_domx.parse( '<xxx />' )
+            var xsl= $jam_domx.parse( '<stylesheet version="1.0" xmlns="http://www.w3.org/1999/XSL/Transform"><template match="xxx"><yyy xmlns="y"/></template></stylesheet>' )
+            var res= $jam_domx.parse( '<yyy xmlns="y" />' )
+            _test.ok( xml.transform( xsl ).toString(), res.toString() )
+        }
+    ]]>
+    </wc_js-test>
+
+</doc_root>

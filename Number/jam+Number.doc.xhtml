@@ -1,0 +1,26 @@
+<?xml-stylesheet href="../../doc/-mix/index.stage=dev.xsl" type="text/xsl"?>
+<doc_root
+    xmlns="http://www.w3.org/1999/xhtml"
+    >
+
+    <h1>$jam_Number</h1>
+    <p>Создаёт обёртку для чисел.</p>
+
+    <wc_js-test> _test.ok( $jam_Number ) </wc_js-test>
+    <wc_js-test>
+        _test.ok( $jam_Number( 123 ) )
+    </wc_js-test>
+    <wc_js-test>
+        var numb= $jam_Number( 123 )
+        _test.ok( $jam_Number( numb ), numb )
+    </wc_js-test>
+    <wc_js-test>
+        var numb= $jam_Number( 123 )
+        _test.ok( numb.$, 123 )
+    </wc_js-test>
+    <wc_js-test>
+        var numb= $jam_Number( 123 )
+        _test.ok( +numb, 123 )
+    </wc_js-test>
+
+</doc_root>

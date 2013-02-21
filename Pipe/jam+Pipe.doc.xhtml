@@ -1,0 +1,16 @@
+<?xml-stylesheet href="../../doc/-mix/index.stage=dev.xsl" type="text/xsl"?>
+<doc_root
+    xmlns="http://www.w3.org/1999/xhtml"
+    >
+
+    <h1>$jam_Pipe</h1>
+    <p>Выстраивает переданные ей функции в один трубопровод, где результат исполнения предыдущей подаётся на вход следующей.</p>
+
+    <wc_js-test> _test.ok( $jam_Pipe ) </wc_js-test>
+    <wc_js-test> _test.ok( $jam_Pipe() ) </wc_js-test>
+    <wc_js-test> _test.ok( $jam_Pipe()( 123 ), 123 ) </wc_js-test>
+    <wc_js-test> _test.ok( $jam_Pipe( Math.abs ), Math.abs ) </wc_js-test>
+    <wc_js-test> _test.ok( $jam_Pipe( Math.abs )( -5 ), 5 ) </wc_js-test>
+    <wc_js-test> _test.ok( $jam_Pipe( parseInt, Math.abs )( '-5px' ), 5 ) </wc_js-test>
+    
+</doc_root>

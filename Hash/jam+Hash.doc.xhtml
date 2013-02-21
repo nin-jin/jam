@@ -1,0 +1,34 @@
+<?xml-stylesheet href="../../doc/-mix/index.stage=dev.xsl" type="text/xsl"?>
+<doc_root
+    xmlns="http://www.w3.org/1999/xhtml"
+    >
+
+    <h1>$jam_Hash</h1>
+
+    <p>Создаёт хэш-таблицу. Если в параметрах передать объект и префикс - будет использовать его для хранения данных.</p>
+
+    <p>
+        <wc_js-test> _test.ok( $jam_Hash ) </wc_js-test>
+        <wc_js-test> _test.not( $jam_Hash().has( 'foo' ) ) </wc_js-test>
+        <wc_js-test> _test.not( $jam_Hash().has( 'hasOwnProperty' ) ) </wc_js-test>
+        <wc_js-test>
+            var hash= $jam_Hash()
+            hash.put( 'foo', 'bar' )
+            _test.ok( hash.has( 'foo' ) )
+        </wc_js-test>
+        <wc_js-test>
+            var hash= $jam_Hash()
+            hash.put( 'foo', 'bar' )
+            _test.ok( hash.get( 'foo' ), 'bar' )
+        </wc_js-test>
+        <wc_js-test>
+            var hash= $jam_Hash({ prefix: 'foo:', obj: { 'foo:bar': 123 } })
+            _test.ok( hash.has( 'bar' ) )
+        </wc_js-test>
+        <wc_js-test>
+            var hash= $jam_Hash({ prefix: '', obj: $jam })
+            _test.ok( hash.has( 'Hash' ) )
+        </wc_js-test>
+    </p>
+
+</doc_root>

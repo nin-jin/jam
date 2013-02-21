@@ -1,0 +1,18 @@
+<?xml-stylesheet href="../../doc/-mix/index.stage=dev.xsl" type="text/xsl"?>
+<doc_root
+    xmlns="http://www.w3.org/1999/xhtml"
+    >
+    
+    <h1>$jam_schedule</h1>
+
+    <p>Устанавливает выполнение функции через заданное время. Возвращает функцию, которая отменяет это действие.</p>
+
+    <wc_js-test> _test.ok( $jam_schedule ) </wc_js-test>
+    <wc_js-test>
+        _test.deadline( 50 )
+        $jam_schedule( 10, function( ){
+            _test.ok( )
+        })
+    </wc_js-test>
+
+</doc_root>

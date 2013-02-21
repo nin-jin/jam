@@ -1,0 +1,31 @@
+<?xml-stylesheet href="../../doc/-mix/index.stage=dev.xsl" type="text/xsl"?>
+<doc_root
+    xmlns="http://www.w3.org/1999/xhtml"
+    >
+
+    <h1>$jam_Cached</h1>
+
+    <p>Враппер, кэширующий результат исполнения функции по первому параметру приведённому к строке.</p>
+
+    <wc_js-test> _test.ok( $jam_Cached ) </wc_js-test>
+    <wc_js-test>
+        var rnd= $jam_Cached( Math.random )
+        _test.ok( rnd( 100 ), rnd( 100 ) )
+    </wc_js-test>
+    <wc_js-test>
+        var rnd= $jam_Cached( Math.random )
+        _test.not( rnd( 100 ), rnd( 101 ) )
+    </wc_js-test>
+    <wc_js-test>
+        var rnd= $jam_Cached( Math.random )
+        _test.ok( rnd( 100, 1 ), rnd( 100, 2 ) )
+    </wc_js-test>
+    <wc_js-test>
+        var rnd= $jam_Cached( Math.random )
+        _test.not( rnd( 100, 1 ), rnd( 101, 1 ) )
+    </wc_js-test>
+    <wc_js-test>
+        _test.not( $jam_Cached(Math.random)( 100 ), $jam_Cached( Math.random )( 100 ) )
+    </wc_js-test>
+
+</doc_root>

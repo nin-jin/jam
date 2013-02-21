@@ -1,0 +1,17 @@
+<?xml-stylesheet href="../../doc/-mix/index.stage=dev.xsl" type="text/xsl"?>
+<doc_root
+    xmlns="http://www.w3.org/1999/xhtml"
+    >
+
+    <h1>$jam_Concater</h1>
+
+    <p>Принимает на вход разделитель и возвращает функцию, которая через него соединяет элементы передаваемого ей на вход массива.</p>
+
+    <p>
+        <wc_js-test> _test.ok( $jam_Concater ) </wc_js-test>
+        <wc_js-test> _test.ok( $jam_Concater() ) </wc_js-test>
+        <wc_js-test> _test.ok( $jam_Concater()( [ 1, 2 ] ), '12' ) </wc_js-test>
+        <wc_js-test> _test.ok( $jam_Concater( '+' )( [ 1, 2 ] ), '1+2' ) </wc_js-test>
+    </p>
+
+</doc_root>

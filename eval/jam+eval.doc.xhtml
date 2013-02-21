@@ -1,0 +1,16 @@
+<?xml-stylesheet href="../../doc/-mix/index.stage=dev.xsl" type="text/xsl"?>
+<doc_root
+    xmlns="http://www.w3.org/1999/xhtml"
+    >
+
+    <h1>$jam_eval</h1>
+
+    <p>Исполняет переданный в качестве строки код в глобальном контексте в отдельном синхронном потоке.</p>
+
+    <p>
+        <wc_js-test> _test.ok( $jam_eval ) </wc_js-test>
+        <wc_js-test> _test.ok( $jam_eval( '1+2' ), 3 ) </wc_js-test>
+        <wc_js-test> _test.ok( $jam_eval( '(!)' ), void 0 ) </wc_js-test>
+    </p>
+
+</doc_root>

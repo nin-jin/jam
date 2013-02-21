@@ -1,0 +1,63 @@
+<?xml-stylesheet href="../../doc/-mix/index.stage=dev.xsl" type="text/xsl"?>
+<doc_root
+    xmlns="http://www.w3.org/1999/xhtml"
+    >
+
+    <h1>$jam_String</h1>
+    <p>Создаёт обёртку для строк.</p>
+
+    <wc_js-test> _test.ok( $jam_String ) </wc_js-test>
+    <wc_js-test>
+        _test.ok( $jam_String( 'foo' ) )
+    </wc_js-test>
+    <wc_js-test>
+        var str= $jam_String( 'foo' )
+        _test.ok( $jam_String( str ), str )
+    </wc_js-test>
+    <wc_js-test>
+        var str= $jam_String( 'foo' )
+        _test.ok( str.$, 'foo' )
+    </wc_js-test>
+    <wc_js-test>
+        var str= $jam_String( 'foo' )
+        _test.ok( str + 'bar', 'foobar' )
+    </wc_js-test>
+    <wc_js-test>
+        var str= $jam_String()
+        _test.ok( str.$, '' )
+    </wc_js-test>
+    <wc_js-test>
+        _test.ok( $jam_String( 'foo' ).length(), 3 )
+    </wc_js-test>
+    <wc_js-test>
+        var str= $jam_String( '    foo\n    bar' )
+        str.incIndent()
+        _test.ok( str.$, '        foo\n        bar' )
+    </wc_js-test>
+    <wc_js-test>
+        var str= $jam_String( '        foo\n        bar' )
+        str.decIndent()
+        _test.ok( str.$, '    foo\n    bar' )
+    </wc_js-test>
+    <wc_js-test>
+        var str= $jam_String( '        foo\n            bar' )
+        str.minimizeIndent()
+        _test.ok( str.$, 'foo\n    bar' )
+    </wc_js-test>
+    <wc_js-test>
+        var str= $jam_String( '\t\t' )
+        str.normilizeSpaces()
+        _test.ok( str.$, '        ' )
+    </wc_js-test>
+    <wc_js-test>
+        var str= $jam_String( '\t abc\n' )
+        str.trim()
+        _test.ok( str.$, 'abc' )
+    </wc_js-test>
+    <wc_js-test>
+        var str= $jam_String( 'abacabcba' )
+        str.trim( /ab?/ )
+        _test.ok( str.$, 'cabcb' )
+    </wc_js-test>
+
+</doc_root>

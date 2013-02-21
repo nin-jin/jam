@@ -1,0 +1,80 @@
+<?xml-stylesheet href="../../doc/-mix/index.stage=dev.xsl" type="text/xsl"?>
+<doc_root
+    xmlns="http://www.w3.org/1999/xhtml"
+    >
+
+    <h1>$jam_Event</h1>
+
+    <p>Обёртка для объектов-событий предоставляющая кроссбраузерный апи к ним. При вызове без параметров создаёт новый объект события, который можно настроить через специальные методы.</p>
+
+    <wc_js-test>
+        var node1= $jam_Node( document )
+        var node2= $jam_Node( document.body )
+
+        var obs=
+        $jam_Observer()
+        .node( node1 )
+        .eventName( 'click' )
+        .handler( function( event ){
+            _test.ok( event.type(), 'click' )
+        })
+        .listen()
+        
+        $jam_Event().type( 'click' ).scream( node2 )
+        obs.sleep()
+    </wc_js-test>
+    <wc_js-test>
+        var node= $jam_Node( document.body )
+        var catched= false
+
+        var obs=
+        $jam_Observer()
+        .node( node )
+        .eventName( 'click' )
+        .handler( function( ev ){
+            catched= true
+        })
+        .listen()
+
+        var event= $jam_Event().type( 'click' )
+        obs.sleep()
+        event.scream( node )
+        _test.ok( catched, false )
+    </wc_js-test>
+
+    <wc_js-test>
+        var node1= $jam_Node( document )
+        var node2= $jam_Node( document.body )
+
+        var obs=
+        $jam_Observer()
+        .node( node1 )
+        .eventName( '$jam_Event._test_' )
+        .handler( function( event ){
+            _test.ok( event.type(), '$jam_Event._test_' )
+        })
+        .listen()
+        
+        $jam_Event().type( '$jam_Event._test_' ).scream( node2 )
+        obs.sleep()
+    </wc_js-test>
+    <wc_js-test>
+        var node= $jam_Node( document.body )
+        var catched= false
+
+        var obs=
+        $jam_Observer()
+        .node( node )
+        .eventName( '$jam_Event._test_' )
+        .handler( function( ev ){
+            catched= true
+        })
+        .listen()
+
+        var event= $jam_Event().type( '$jam_Event._test_' )
+        obs.sleep()
+        event.scream( node )
+        _test.ok( catched, false )
+    </wc_js-test>
+
+</doc_root>

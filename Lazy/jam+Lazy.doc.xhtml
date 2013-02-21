@@ -1,0 +1,26 @@
+<?xml-stylesheet href="../../doc/-mix/index.stage=dev.xsl" type="text/xsl"?>
+<doc_root
+    xmlns="http://www.w3.org/1999/xhtml"
+    >
+
+    <h1>$jam_Lazy</h1>
+    <p>Создаёт ленивую функцию. Принимает на вход фабрику, которую использует для создания актуальной функции при первом вызове.</p>
+
+    <wc_js-test> _test.ok( $jam_Lazy ) </wc_js-test>
+    <wc_js-test>
+        var lazy= $jam_Lazy( function(){
+            return function( a, b ){
+                return b
+            }
+        })
+        _test.ok( lazy( 1, 2 ), 2 )
+    </wc_js-test>
+    <wc_js-test>
+        var lazy= $jam_Lazy( function(){
+            var a= Math.random()
+            return $jam_Value( a )
+        })
+        _test.ok( lazy(), lazy() )
+    </wc_js-test>
+
+</doc_root>

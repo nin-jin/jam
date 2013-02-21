@@ -1,0 +1,21 @@
+<?xml-stylesheet href="../../doc/-mix/index.stage=dev.xsl" type="text/xsl"?>
+<doc_root
+    xmlns="http://www.w3.org/1999/xhtml"
+    >
+
+    <h1>$jam_RegExp</h1>
+    <p>Создаёт обёртку для регулярных выражений.</p>
+
+    <wc_js-test> _test.ok( $jam_RegExp ) </wc_js-test>
+    <wc_js-test>
+        _test.ok( $jam_RegExp( 'foo' ) )
+    </wc_js-test>
+    <wc_js-test>
+        var re= $jam_RegExp( '1((2)3)' )
+        _test.ok( re.count(), 2 )
+    </wc_js-test>
+    <wc_js-test>
+        _test.ok( $jam_RegExp.escape( '{[(' ), '\\{\\[\\(' )
+    </wc_js-test>
+
+</doc_root>

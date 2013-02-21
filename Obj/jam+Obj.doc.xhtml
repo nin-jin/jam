@@ -1,0 +1,60 @@
+<?xml-stylesheet href="../../doc/-mix/index.stage=dev.xsl" type="text/xsl"?>
+<doc_root
+    xmlns="http://www.w3.org/1999/xhtml"
+    >
+
+    <h1>$jam_Obj</h1>
+    <p>Создаёт обёртку предоставляющую базовый интерфейс работы с объектами.</p>
+
+    <wc_js-test> _test.ok( $jam_Obj ) </wc_js-test>
+    <wc_js-test>
+        var obj= $jam_Obj( {} )
+        _test.ok( $jam_Obj( obj ), obj )
+    </wc_js-test>
+    <wc_js-test>
+        var obj= {}
+        _test.ok( $jam_Obj( obj ).$, obj )
+    </wc_js-test>
+    <wc_js-test>
+        var obj= $jam_Obj( {} )
+        _test.ok( obj.has( 'foo' ), false )
+    </wc_js-test>
+    <wc_js-test>
+        var obj= $jam_Obj( { foo: 'bar' } )
+        _test.ok( obj.has( 'foo' ), true )
+    </wc_js-test>
+    <wc_js-test>
+        var obj= $jam_Obj( {} )
+        _test.ok( obj.get( 'foo' ), void 0 )
+    </wc_js-test>
+    <wc_js-test>
+        var obj= $jam_Obj( { foo: 'bar' } )
+        _test.ok( obj.get( 'foo' ), 'bar' )
+    </wc_js-test>
+    <wc_js-test>
+        var obj= $jam_Obj( {} )
+        obj.put( 'foo', 'bar' )
+        _test.ok( obj.$.foo, 'bar' )
+    </wc_js-test>
+    <wc_js-test>
+        var obj= $jam_Obj( {} )
+        obj.init( function( obj ){
+            obj.foo= 'bar'
+        })
+        _test.ok( obj.get( 'foo' ), 'bar' )
+    </wc_js-test>
+    <wc_js-test>
+        var obj= $jam_Obj( {} )
+        obj.define( 'foo', 'bar' )
+        _test.ok( obj.get( 'foo' ), 'bar' )
+    </wc_js-test>
+    <wc_js-test>
+        var obj= $jam_Obj( { foo: void 0 } )
+        try {
+            obj.define( 'foo', 'bar' )
+        } catch( e ){
+            return _test.ok( e )
+        }
+    </wc_js-test>
+
+</doc_root>

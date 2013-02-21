@@ -1,0 +1,19 @@
+<?xml-stylesheet href="../../doc/-mix/index.stage=dev.xsl" type="text/xsl"?>
+<doc_root
+    xmlns="http://www.w3.org/1999/xhtml"
+    >
+
+    <h1>$jam_domReady</h1>
+
+    <p>Определяет скачан ли документ полностью или ещё нет. Метод then позволяет выполнить переданную ему функцию только когда документ будет полностью загружен (если он уже загружен - она будет вызвана немедленно).</p>
+
+    <p>
+        <wc_js-test>
+            _test.deadline( 1000 )
+            $jam_domReady.then( function(){
+                _test.ok( $jam_domReady() )
+            })
+        </wc_js-test>
+    </p>
+
+</doc_root>

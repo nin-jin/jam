@@ -1,0 +1,19 @@
+<?xml-stylesheet href="../../doc/-mix/index.stage=dev.xsl" type="text/xsl"?>
+<doc_root
+    xmlns="http://www.w3.org/1999/xhtml"
+    >
+
+    <h1>$jam_log</h1>
+    <p>Логгирует переданные значения в консоль</p>
+
+    <wc_js-test> _test.ok( $jam_log ) </wc_js-test>
+    <wc_js-test>
+        $jam_log( 'sample log' )
+        _test.ok()
+    </wc_js-test>
+    <wc_js-test>
+        $jam_log( 'two', 'sample logs' )
+        _test.ok()
+    </wc_js-test>
+
+</doc_root>

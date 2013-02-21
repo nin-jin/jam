@@ -1,0 +1,60 @@
+<?xml-stylesheet href="../../doc/-mix/index.stage=dev.xsl" type="text/xsl"?>
+<doc_root
+    xmlns="http://www.w3.org/1999/xhtml"
+    >
+
+    <h1>$jam_TemplateFactory</h1>
+    <p>Фабрика по производству шаблонизаторов.</p>
+
+    <wc_js-test> _test.ok( $jam_TemplateFactory ) </wc_js-test>
+    <wc_js-test>
+        var Template= $jam_TemplateFactory()
+        var template= Template( 'a{0}b' )
+        _test.ok( String( template ), 'a{0}b' )
+    </wc_js-test>
+    <wc_js-test>
+        var Template= $jam_TemplateFactory()
+        var template= Template( 'a{0}b' ).fill([1])
+        _test.ok( String( template ), 'a1b' )
+    </wc_js-test>
+    <wc_js-test>
+        var Template= $jam_TemplateFactory()
+        var template= Template( 'a{0}{1}b' ).fill([1, 2])
+        _test.ok( String( template ), 'a12b' )
+    </wc_js-test>
+    <wc_js-test>
+        var Template= $jam_TemplateFactory()
+        var template= Template( 'a{{0}}{1}b' ).fill( [1, 2] )
+        _test.ok( String( template ), 'a{0}2b' )
+    </wc_js-test>
+    <wc_js-test>
+        var Template= $jam_TemplateFactory({ tokens: '[]' })
+        var template= Template( 'a[0]b' ).fill( [1] )
+        _test.ok( String( template ), 'a1b' )
+    </wc_js-test>
+    <wc_js-test>
+        var Selector= $jam_TemplateFactory.Selector( function( str ){
+            return '(' + str + ')'
+        })
+        var Template= $jam_TemplateFactory({ Selector: Selector })
+        var template= Template( 'a{0}b' ).fill( [1] )
+        _test.ok( String( template ), 'a(1)b' )
+    </wc_js-test>
+    <wc_js-test>
+        var encoder= function( str ){
+            return '(' + str + ')'
+        }
+        var Template= $jam_TemplateFactory({ encoder: encoder })
+        var template= Template( 'a{0}b' ).fill( [1] )
+        _test.ok( String( template ), 'a(1)b' )
+    </wc_js-test>
+    <wc_js-test>
+        var Selector= function( str, key ){
+            return key.toUpperCase()
+        }
+        var Template= $jam_TemplateFactory({ Selector: Selector })
+        var template= Template( 'a{b}c' )
+        _test.ok( String( template ), 'aBc' )
+    </wc_js-test>
+
+</doc_root>

@@ -1,0 +1,52 @@
+<?xml-stylesheet href="../../doc/-mix/index.stage=dev.xsl" type="text/xsl"?>
+<doc_root
+    xmlns="http://www.w3.org/1999/xhtml"
+    >
+
+    <h1>$jam_Class</h1>
+
+    <p>Создаёт класс - функцию, создающую объекты. В качестве параметра принимает функцию-инициализатор, которой передаёт свежесозданный класс и его прототип. У каждого класса есть метод create являющийся фабрикой и вызываемый при инстанцировании класса. Сам класс следовательно тоже является фабрикой. Инстанцирование его через new - создаёт неинициализированный инстанс, что используется для реализации наследования без проксирующих классов.</p>
+
+    <wc_js-test> _test.ok( $jam_Class ) </wc_js-test>
+    <wc_js-test>
+        var ClassInner
+        var Class= $jam_Class(function( klass ){
+            ClassInner= klass
+        })
+        _test.ok( Class, ClassInner )
+    </wc_js-test>
+    <wc_js-test>
+        var Class= $jam_Class(function( klass ){ })
+        _test.ok( Class() instanceof Class )
+    </wc_js-test>
+    <wc_js-test>
+        var obj= {}
+        var Class= $jam_Class(function( klass ){
+            klass.create= function(){
+                return obj
+            }
+        })
+        _test.ok( Class(), obj )
+    </wc_js-test>
+    <wc_js-test>
+        var obj1= {}
+        var Class= $jam_Class(function( klass ){
+            klass.create= function(){
+                return obj1
+            }
+        })
+        var obj2= new Class
+        _test.ok( obj2 instanceof Class )
+    </wc_js-test>
+    <wc_js-test>
+        var Class= $jam_Class(function( klass ){
+            klass.prototype.method= function(){
+                return obj1
+            }
+        })
+        var obj1= new Class
+        var obj2= Class()
+        _test.ok( obj1.method, obj2.method )
+    </wc_js-test>
+
+</doc_root>
