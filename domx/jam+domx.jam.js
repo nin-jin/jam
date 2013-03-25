@@ -8,7 +8,7 @@ $jam_Class( function( klass, proto ){
             return this
         }
         
-        proto.toDOMDocument=
+        proto.toDOMDoc=
         function( ){
             return this.$.ownerDocument || this.$
         }
@@ -46,7 +46,7 @@ $jam_Class( function( klass, proto ){
         
         proto.select=
         function( xpath ){
-            result= this.toDOMDocument().evaluate( xpath, this.toDOMNode(), null, null, null ).iterateNext()
+            result= this.toDOMDoc().evaluate( xpath, this.toDOMNode(), null, null, null ).iterateNext()
             return $jam_domx( result )
         }
         
